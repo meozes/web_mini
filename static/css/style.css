@@ -30,7 +30,7 @@ header .nav {
 
 header > div,
 article {
-    margin: 0 auto;
+    margin: 32px auto;
     width: 100%;
     max-width: 1024px;
 }
@@ -55,8 +55,9 @@ article {
     color: #7dd2f0;
 }
 
-.body {
-    margin: 0;
+.login-body {
+    display: block;
+    margin: 0 auto;
     padding: 120px 0;
 }
 
@@ -110,34 +111,68 @@ h1.title-name {
 .buttons {
     flex-wrap: nowrap;
 }
+/*-----------------intro------------*/
+
+.intro {
+    text-align: center;
+    color: #fff;
+    margin: 100px 0;
+}
+
+/*-----------------mood card------------*/
+.mood {
+}
+
+/*-----------------플레이리스트------------*/
+
+a.list {
+    padding: 16px 0px 12px 0px;
+}
+
+h5.list-head {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.list-body {
+    margin-left: 16px;
+}
+
+div.list-body > h5 {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+}
+
+div.list-body > span {
+    font-size: 14px;
+    color: #666;
+    font-weight: 400;
+}
+
+div.list-body > p {
+    font-size: 12px;
+    color: #666;
+    font-weight: 400;
+    margin-top: 16px;
+}
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 코멘트 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
 body > article {
     display: block;
-    color: black;
     margin: 32px 0;
 }
 
 .wrap {
-    top: 0;
-    margin: auto;
-}
-
-.wrap > div {
     padding: 20px;
-    width: 360px;
     height: 100%;
     border: 1px #fff solid;
     border-radius: 1rem;
 }
 
-#post-box {
-    width: 500px;
-    margin: 20px auto;
-    padding: 50px;
-    border: black solid;
-    border-radius: 5px;
+.comment-head {
+    margin-bottom: 24px;
 }
 
 .card-text {
