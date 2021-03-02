@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MyPlaylist | Login</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            function login() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/login',
+                    data: { id_give: $('#userid').val(), pw_give: $('#userpw').val() },
+                    success: function (response) {
+                        if (response['result'] == 'success') {
+                            // 로그인이 정상적으로 되면, 토큰을 받아옵니다.
+                            // 이 토큰을 mytoken이라는 키 값으로 쿠키에 저장합니다.
+                            $.cookie('mytoken', response['token']);
+
+                            alert('로그인 완료!');
+                            window.location.href = '/';
+                        } else {
+                            // 로그인이 안되면 에러메시지를 띄웁니다.
+                            alert(response['msg']);
+                        }
+                    },
+                });
+            }
+
+            function is_nickname(asValue) {
+                var regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
+                return regExp.test(asValue);
+            }
+
+            function is_password(asValue) {
+                var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,20}$/;
+                return regExp.test(asValue);
+            }
+        </script>
+    </head>
+    <body>
+        <header class="container-fluid">
+            <div class="nav row">
+                <div class="col-6 align">
+                    <a href="index.html" target="_self">
+                        <img src="../static/logo-01.png" alt="Canvas logo" style="width: 148px" />
+                    </a>
+                </div>
+
+                <div class="col-6 align">
+                    <a class="nav-btn" href="login.html" target="_self">로그인</a>
+                    <a class="nav-btn" href="signup.html" target="_self">회원가입</a>
+                </div>
+            </div>
+        </header>
+
+        <article class="row body">
+            <section class="col-md log-in-section">
+                <div class="title">
+                    <span class="title-body">기분 좋은 하루를 위한</span>
+                    <h1 class="title-name">Moodic</h1>
+                </div>
+                <div class="log-in">
+                    <div class="input-group mb-3">
+                        <input
+                            type="text"
+                            class="form-control log-in"
+                            aria-label="Dollar amount (with dot and two decimal places)"
+                            placeholder="ID"
+                            id="userid"
+                        />
+                    </div>
+                    <div class="input-group mb-3" id="id_receive">
+                        <input
+                            type="password"
+                            class="form-control log-in"
+                            aria-label="Dollar amount (with dot and two decimal places)"
+                            placeholder="PW"
+                            id="userpw"
+                        />
+                    </div>
+                    <div class="button" id="pw_hash">
+                        <button type="button" class="btn btn-primary log-in">로그인</button>
+                    </div>
+                    <div>
+                        <span class="or">or</span>
+                    </div>
+                    <div class="button">
+                        <button
+                            onclick="register()"
+                            type="button"
+                            class="btn btn-outline-primary log-in"
+                        >
+                            회원가입
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </body>
+</html>

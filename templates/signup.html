@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원가입 | Moodic</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            function register() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/register',
+                    data: {
+                        id_give: $('#userid').val(),
+                        pw_give: $('#userpw').val(),
+                        nickname_give: $('#usernick').val(),
+                    },
+                    success: function (response) {
+                        if (response['result'] == 'success') {
+                            alert('회원가입이 완료되었습니다.');
+                            window.location.href = '/login';
+                        } else {
+                            alert(response['msg']);
+                        }
+                    },
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <header class="container-fluid">
+            <div class="nav row">
+                <div class="col-6 align">
+                    <a href="index.html" target="_self">
+                        <img src="../static/logo-01.png" alt="Canvas logo" style="width: 148px" />
+                    </a>
+                </div>
+
+                <div class="col-6 align">
+                    <a class="nav-btn" href="login.html" target="_self">로그인</a>
+                    <a class="nav-btn" href="signup.html" target="_self">회원가입</a>
+                </div>
+            </div>
+        </header>
+
+        <article class="row body">
+            <section class="col-md log-in-section">
+                <div class="title">
+                    <span class="title-body">기분 좋은 하루를 위한 Moodic</span>
+                    <h1 class="title-name">회원가입</h1>
+                </div>
+                <div class="log-in">
+                    <div class="input-group mb-3">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="ID"
+                            aria-label="Recipient's username"
+                            aria-describedby="button-addon2"
+                        />
+                        <button type="button" class="btn btn-primary">중복확인</button>
+                            
+                        </button>
+                    </div>
+
+                    <div class="input-group mb-3" id="id_receive">
+                        <input
+                            type="text"
+                            class="form-control log-in"
+                            aria-label="Dollar amount (with dot and two decimal places)"
+                            placeholder="PW"
+                            id="userpw"
+                            required
+                        />
+                    </div>
+                    <div class="input-group mb-3">
+                        <input
+                            type="text"
+                            class="form-control log-in"
+                            aria-label="Dollar amount (with dot and two decimal places)"
+                            placeholder="닉네임"
+                            id="usernick"
+                            required
+                        />
+                    </div>
+                    <div class="button">
+                        <button onclick="register()" type="button" class="btn btn-primary log-in">
+                            회원가입
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </body>
+</html>
