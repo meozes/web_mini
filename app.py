@@ -7,7 +7,7 @@ from pymongo import MongoClient
 client = MongoClient('mongodb://54.180.160.114', 27017, username="test", password="test")
 # client = MongoClient('mongodb://test:test@localhost', 27017)
 # client = MongoClient('localhost', 27017)
-db = client.userdata
+db = client.usersdata
 
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
 # 이 문자열은 서버만 알고있기 때문에, 내 서버에서만 토큰을 인코딩(=만들기)/디코딩(=풀기) 할 수 있습니다.
@@ -37,28 +37,28 @@ def login():
 def signup():
    return render_template("signup.html")
 
+
+
+
 @app.route('/sign_up/check_dup', methods=['POST'])
 def check_dup():
-username_receive = request.form['username_give']
-exists = bool(db.users.find_one({"username": username_receive}))
-return jsonify({'result': 'success', 'exists': exists})
+    username_receive = request.form['username_give']
+    exists = bool(db.users.find_one({"id": username_receive}))
+    return jsonify({'result': 'success', 'exists': exists})
 
 
-@app.route('/sign_up/save', methods=['POST'])
-def sign_up():
-username_receive = request.form['username_give']
-password_receive = request.form['password_give']
-password_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
-doc = {
-"username": username_receive, # 아이디
-"password": password_hash, # 비밀번호
-"profile_name": username_receive, # 프로필 이름 기본값은 아이디
-"profile_pic": "", # 프로필 사진 파일 이름
-"profile_pic_real": "profile_pics/profile_placeholder.png", # 프로필 사진 기본 이미지
-"profile_info": "" # 프로필 한 마디
-}
-db.users.insert_one(doc)
-return jsonify({'result': 'success'})
+@app.route('/api/signup', methods=['POST'])
+def api_signup():
+    username_receive = request.form['username_give']
+    password_receive = request.form['password_give']
+    nickname_receive = request.form['nickname_give']
+
+    pw_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
+
+    db.users.insert_one({'id': username_receive, 'pw': pw_hash, 'nick': nickname_receive})
+
+    return jsonify({'result': 'success'})
+
 
 
 
@@ -71,7 +71,7 @@ def api_login():
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
     # id, 암호화된pw을 가지고 해당 유저를 찾습니다.
-    result = db.user.find_one({'id': id_receive, 'pw': pw_hash})
+    result = db.users.find_one({'id': id_receive, 'pw': pw_hash})
 
     # 찾으면 JWT 토큰을 만들어 발급합니다.
     if result is not None:
@@ -92,9 +92,6 @@ def api_login():
     # 찾지 못하면
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
-
-
-
 
 
 
