@@ -9,6 +9,10 @@ client = MongoClient('mongodb://54.180.160.114', 27017, username="test", passwor
 # client = MongoClient('localhost', 27017)
 db = client.usersdata
 
+app = Flask(__name__)
+app.config["TEMPLATES_AUTO_RELOAD"] = True
+
+
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
 # 이 문자열은 서버만 알고있기 때문에, 내 서버에서만 토큰을 인코딩(=만들기)/디코딩(=풀기) 할 수 있습니다.
 SECRET_KEY = 'SPARTA'
@@ -23,27 +27,46 @@ import datetime
 # 그렇지 않으면, 개발자(=나)가 회원들의 비밀번호를 볼 수 있으니까요.^^;
 import hashlib
 
+from datetime import timedelta
+
+
+
 @app.route('/')
 def home():
-   return render_template('index.html')
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        return render_template('index.html')
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+
+
+# return render_template('index.html')
 
 @app.route('/login')
 def login():
-   msg = request.args.get("msg")
-   return render_template('login.html', msg=msg)
+    msg = request.args.get("msg")
+    return render_template('login.html', msg=msg)
 
 
 @app.route('/signup')
 def signup():
-   return render_template("signup.html")
-
-
+    return render_template("signup.html")
 
 
 @app.route('/sign_up/check_dup', methods=['POST'])
 def check_dup():
     username_receive = request.form['username_give']
     exists = bool(db.users.find_one({"id": username_receive}))
+    return jsonify({'result': 'success', 'exists': exists})
+
+
+@app.route('/sign_up/check_dup2', methods=['POST'])
+def check_dup2():
+    usernick_receive = request.form['usernick_give']
+    exists = bool(db.users.find_one({"nick": usernick_receive}))
     return jsonify({'result': 'success', 'exists': exists})
 
 
@@ -58,7 +81,6 @@ def api_signup():
     db.users.insert_one({'id': username_receive, 'pw': pw_hash, 'nick': nickname_receive})
 
     return jsonify({'result': 'success'})
-
 
 
 
@@ -84,16 +106,14 @@ def api_login():
             'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=5)
         }
 
-
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
 
         # token을 줍니다.
-        return jsonify({'result': 'success', 'token': token})
+        return jsonify({'result': 'success', 'token': token, 'data': result['id']})
     # 찾지 못하면
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
 
-
 if __name__ == '__main__':
-   app.run('0.0.0.0',port=5000,debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)
