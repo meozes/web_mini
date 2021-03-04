@@ -1,8 +1,14 @@
 body {
-    marign: 0;
-    height: 100vh;
-    background: linear-gradient(#7dd2f0, #dbf6d9);
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(96, 198, 255, 1) 10%,
+        rgba(237, 255, 186, 0.6) 80%,
+        rgba(237, 255, 186, 0.1)
+    );
 }
+
 a {
     text-decoration: none;
 }
@@ -116,45 +122,97 @@ h1.title-name {
 .intro {
     text-align: center;
     color: #fff;
-    margin: 100px 0;
+    margin: 120px 0;
 }
 
 /*-----------------mood card------------*/
-.mood {
+
+body > article:nth-of-type(1),
+article:nth-of-type(3) {
+    margin: 60px auto;
 }
 
+a.mood {
+    color: #7dd2f0;
+}
+
+a.mood:hover {
+    color: #4cade3;
+    text-decoration: none;
+}
+
+a.myanchor.sunsetred:active {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(96, 0, 255, 1) 10%,
+        rgba(0, 255, 186, 0.6) 80%,
+        rgba(237, 255, 186, 0.1)
+    );
+}
+
+/*-----------------form------------*/
+
+article > section > article.media {
+    margin: 0 auto;
+    height: 40px;
+    width: 50%;
+}
+
+body > article:nth-child(2) > section.row {
+    border-bottom: 1px #fff solid;
+    border-top: 1px #fff solid;
+}
+
+nav.level {
+    height: 40px;
+}
+
+a.posting {
+    background-color: #7dd2f0;
+    color: #fff;
+}
+
+a.posting:hover {
+    background-color: #4cade3;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+a.is-sparta:hover {
+    text-decoration: none;
+}
 /*-----------------플레이리스트------------*/
 
-a.list {
-    padding: 16px 0px 12px 0px;
+section.col-8 > section.section {
+    padding: 0;
 }
 
-h5.list-head {
-    font-size: 20px;
-    font-weight: 400;
+div.box > article.media {
+    margin: 0;
 }
 
-.list-body {
-    margin-left: 16px;
+div.container > div.box {
+    height: 106px;
 }
 
-div.list-body > h5 {
-    font-size: 18px;
+strong.title {
+    font-size: 16px;
     color: #333;
-    font-weight: 600;
+    font-weight: 500;
 }
 
-div.list-body > span {
+small.artist {
     font-size: 14px;
-    color: #666;
-    font-weight: 400;
+    color: #969696;
+    font-weight: 300;
 }
 
-div.list-body > p {
-    font-size: 12px;
-    color: #666;
-    font-weight: 400;
-    margin-top: 16px;
+p.nickname {
+    font-size: 14px;
+    color: #969696;
+    font-weight: 300;
+    text-align: right;
 }
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 코멘트 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
@@ -167,7 +225,7 @@ body > article {
 .wrap {
     padding: 20px;
     height: 100%;
-    border: 1px #fff solid;
+    border: 1px rgba(96, 198, 255, 0.4) solid;
     border-radius: 1rem;
 }
 
@@ -175,6 +233,18 @@ body > article {
     margin-bottom: 24px;
 }
 
+.comment-body {
+    margin-bottom: 24px;
+}
+
 .card-text {
     margin-bottom: 12px;
+}
+
+.card-comment{
+    padding: 0.5rem 1.24rem;
+}
+
+.card-subtitle{
+    font-size: 14px;
 }
