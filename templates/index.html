@@ -363,41 +363,53 @@
     <article class="container-fluid">
         <div class="row mood">
             <div class="col-3">
+            <button type="button" onclick="toggling(); showMusicList1(); " class="btn btn-outline-primary mood">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">기분 좋은 날에</h5>
-                        <button type="button" onclick="toggling(); showMusicList1();" class="btn btn-outline-primary mood">#상쾌한</button>
-<!--                        <a href="#" class="mood">#상쾌한</a>-->
+                        <h5 class="card-title">활기찬 아침</h5>
+                        #상쾌한
+
+                        <!--                        <a href="#" class="mood">#상쾌한</a>-->
                     </div>
                 </div>
-            </div>
-            <div class="col-3">
+            </button>
+        </div>
+        <div class="col-3">
+            <button type="button" onclick="toggling(); showMusicList2();" class="btn btn-outline-primary mood">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">기분 좋은 날에</h5>
-                        <button type="button" onclick="toggling(); showMusicList2();" class="btn btn-outline-primary mood">#달달한</button>
-<!--                        <a href="#" class="mood">#파워풀한</a>-->
+                        <h5 class="card-title">카페 창가에서</h5>
+                        #나른한
+
+                        <!--                        <a href="#" class="mood">#상쾌한</a>-->
                     </div>
                 </div>
-            </div>
-            <div class="col-3">
+            </button>
+        </div>
+        <div class="col-3">
+            <button type="button" onclick="toggling(); showMusicList3();" class="btn btn-outline-primary mood">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">기분 좋은 날에</h5>
-                        <button type="button" onclick="toggling(); showMusicList3();" class="btn btn-outline-primary mood">#나른한</button>
-<!--                        <a href="#" class="mood">#감성적인</a>-->
+                        <h5 class="card-title">따스한 봄 같이</h5>
+                        #달달한
+
+                        <!--                        <a href="#" class="mood">#상쾌한</a>-->
                     </div>
                 </div>
-            </div>
-            <div class="col-3">
+            </button>
+        </div>
+        <div class="col-3">
+            <button type="button" onclick="toggling(); showMusicList4();" class="btn btn-outline-primary mood">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">기분 좋은 날에</h5>
-<!--                        <a href="#" class="mood myanchor sunsetred">#슬플 때</a>-->
-                        <button type="button" onclick="toggling(); showMusicList4();" class="btn btn-outline-primary mood">#센치한</button>
+                        <h5 class="card-title">잠 못드는 밤</h5>
+                        #센치한
+
+                        <!--                        <a href="#" class="mood">#상쾌한</a>-->
                     </div>
                 </div>
-            </div>
+            </button>
+
         </div>
     </article>
 
@@ -422,48 +434,49 @@
     </article>
 
 <!--    //url, 무드입력 모달-->
-    <div class="modal" id="modal-post">
-        <div class="modal-background" onclick='$("#modal-post").removeClass("is-active");$("#music-url").val("");$("#music-category").val("")'></div>
-        <div class="modal-content">
-            <div class="box">
-                <article class="media">
-                    <div class="media-content">
-                        <div class="field">
-                            <input
-                                    id="music-url"
-                                    class="input is-rounded"
-                                    type="text"
-                                    placeholder="좋아하는 음악의 url을 입력해주세요"
-                            />
-                            <input id="music-category" class="input is-rounded" type="text"
+   <div class="modal" id="modal-post">
+    <div class="modal-background" onclick='$("#modal-post").removeClass("is-active")'></div>
+    <div class="modal-content">
+        <div class="box">
+            <article class="media">
+                <div class="media-content">
+                    <div class="field">
+                        <h6 class="input-title">어디에 저장할까요?</h6>
+                        <input id="music-category" class="input is-rounded" type="text"
                                placeholder="#상쾌한, #달달한, #나른한, #센치한">
 
-                        </div>
-                        <nav class="level is-mobile">
-                            <div class="level-left"></div>
-                            <div class="level-right">
-                                <div class="level-item">
-                                        <a class="button posting" onclick="addMusicList()">추가하기</a>
-                                </div>
-                                <div class="level-item">
-                                    <a
-                                            class="button is-sparta is-outlined"
-                                            onclick='$("#modal-post").removeClass("is-active");$("#music-url").val("");$("#music-category").val("")'
-                                    >취소</a
-                                    >
-                                </div>
-                            </div>
-                        </nav>
+                        <input
+                                id="music-url"
+                                class="input is-rounded"
+                                type="text"
+                                placeholder="좋아하는 음악의 url을 입력해주세요"
+                        />
                     </div>
-                </article>
-            </div>
+                    <nav class="level is-mobile">
+                        <div class="level-left"></div>
+                        <div class="level-right">
+                            <div class="level-item">
+                                <a class="button posting" onclick="addMusicList()">추가하기</a>
+                            </div>
+                            <div class="level-item">
+                                <a
+                                        class="button is-sparta is-outlined"
+                                        onclick='$("#modal-post").removeClass("is-active")'
+                                >취소</a
+                                >
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </article>
         </div>
-        <button
-                class="modal-close is-large"
-                aria-label="close"
-                onclick='$("#modal-post").removeClass("is-active")'
-        ></button>
     </div>
+    <button
+            class="modal-close is-large"
+            aria-label="close"
+            onclick='$("#modal-post").removeClass("is-active")'
+    ></button>
+</div>
 
 
    <article class="container-fluid">
@@ -523,7 +536,7 @@
                             {% set content = comment['comment'] %}
                             {% set comment_nick = comment['user_nick'] %}
                             {% if comment_nick == user_info['nick'] %}
-                                <div id="remove_box" class="card" style="width: 360px; background-color: lavender">
+                                <div id="remove_box" class="card" style="width: 360px; background-color: #DFEFF9; margin-bottom: 16px; ">
                                     <div class="card-body">
                                             <p id="del_content" class="card-text">
                                                 {{ content }}
@@ -538,7 +551,7 @@
                                     </div>
                                 </div>
                             {% else %}
-                                <div class="card" style="width: 360px">
+                                <div class="card" style="width: 360px; margin-bottom: 16px;">
                                     <div class="card-body">
                                             <p class="card-text">
                                                 {{ content }}
@@ -552,6 +565,25 @@
             </section>
             </div>
    </article>
+
+<footer class="container-fluid">
+        <div class="nav row">
+            <div class="col-6 align">
+                <a href="/" target="_self">
+                    <img src="../static/logo-01.png" alt="Canvas logo" style="width: 62px"/>
+                </a>
+            </div>
+             <div class="col-6 align">
+                 <span class="contact">
+                     <h4 class="contact">Contact Us</h4>
+                     <p class="contact"><strong>김율아</strong>  ma_natsu03@naver.com</p>
+                     <p class="contact"><strong>이세정</strong>  sejeong0516@gmail.com</p>
+                     <p class="contact"><strong>이창훈</strong> changhoon1030@gmail.com</p>
+                 </span>
+             </div>
+
+        </div>
+    </footer>
 
     </body>
 </html>

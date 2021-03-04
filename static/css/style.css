@@ -1,0 +1,337 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    height: 100%;
+    background-image: linear-gradient(
+            to bottom,
+            rgba(96, 198, 255, 1) 1%,
+            rgba(237, 255, 186, 0.6) 80%,
+            rgba(237, 255, 186, 0.1)
+    );
+    background-repeat: no-repeat;
+}
+
+p {
+    margin-bottom: 0 !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*----------------------- header ------------------------*/
+header {
+    display: block;
+    padding: 32px 0;
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px #fff solid;
+}
+
+header > div,
+header > div > div {
+    height: 100%;
+}
+
+header .nav {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+
+header > div,
+article {
+    margin: 32px auto;
+    width: 100%;
+    max-width: 1024px;
+}
+
+.nav-btn {
+    float: right;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #7dd2f0;
+    margin: auto 5px;
+    padding: 8px 22px;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+    width: 120px;
+    text-align: center;
+}
+
+.nav-btn:hover {
+    text-decoration: none;
+    background-color: #e9fbff;
+    color: #7dd2f0;
+}
+
+/*--------------- login---------------*/
+.login-body {
+    display: block;
+    margin: 0 auto;
+    padding: 120px 0;
+}
+
+.title-body {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+h1.title-name {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 400;
+    margin-top: 8px;
+
+}
+
+.title {
+    width: 100%;
+    color: #fff;
+    margin: 60px auto;
+    text-align: center;
+}
+
+
+.log-in {
+    display: block;
+    width: 320px;
+    margin: 0 auto;
+}
+
+button.btn-primary {
+    background-color: #7dd2f0;
+    border-color: #7dd2f0;
+}
+
+.form-control::placeholder {
+    color: #666;
+    opacity: .6;
+}
+
+button.btn-outline-primary {
+    color: #7dd2f0;
+    border-color: #7dd2f0;
+}
+
+/*------------------   회워가입    ------------*/
+div.input-margin{
+    margin-bottom: 24px;
+}
+
+div.input-margin2{
+    margin-bottom: 48px;
+}
+
+
+.button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 16px 0;
+}
+
+.or {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    margin: 40px auto 20px auto;
+    text-align: center;
+}
+
+p.help {
+    color: #888;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-left: 4px;
+}
+
+.buttons {
+    flex-wrap: nowrap;
+}
+
+/*-----------------intro------------*/
+
+.intro {
+    text-align: center;
+    color: #fff;
+    margin: 120px 0;
+}
+
+/*-----------------mood card------------*/
+
+body > article:nth-of-type(1),
+article:nth-of-type(3).media {
+    margin: 40px auto;
+}
+
+button.mood {
+    color: #7dd2f0;
+    padding: 0;
+    text-align: left;
+}
+
+
+div.card-body {
+    padding: 1.5rem 7rem 1.25rem 1.5rem;
+}
+
+div.card-body > h5 {
+    color: #666;
+    font-size: 14px;
+
+}
+
+
+/*-----------------form------------*/
+
+
+body > article:nth-of-type(2) {
+    border-bottom: 1px rgba(255, 255, 255, 0.6) solid;
+    border-top: 1px rgba(255, 255, 255, 0.6) solid;
+}
+
+article > section > article.media {
+    margin: 0 auto;
+    height: 40px;
+    width: 50%;
+}
+
+body > article:nth-child(2) > section.row {
+    border-bottom: 1px #fff solid;
+    border-top: 1px #fff solid;
+}
+
+nav.level {
+    height: 40px;
+}
+
+a.posting {
+    background-color: #7dd2f0;
+    color: #fff;
+}
+
+a.posting:hover {
+    background-color: #4cade3;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+a.is-sparta:hover {
+    text-decoration: none;
+}
+
+h6.input-title {
+    font-size: 16px;
+    color: #7dd2f0;
+    font-weight: 400;
+    margin: 0 0 8px 16px;
+}
+
+input.input {
+    margin-bottom: 16px;
+}
+
+/*-----------------플레이리스트------------*/
+
+section.col-8 > section.section {
+    padding: 0;
+}
+
+div.box > article.media {
+    margin: 0;
+}
+
+div.container > div.box {
+    height: 106px;
+}
+
+strong.title {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+small.artist {
+    font-size: 14px;
+    color: #969696;
+    font-weight: 300;
+}
+
+p.nickname {
+    font-size: 14px;
+    color: #969696;
+    font-weight: 300;
+    text-align: right;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 코멘트 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+body > article {
+    display: block;
+    margin: 32px 0;
+}
+
+.wrap {
+    padding: 20px;
+    height: 100%;
+    border: 1px #fff solid;
+    border-radius: 1rem;
+}
+
+.comment-head {
+    margin-bottom: 24px;
+}
+
+.comment-body {
+    margin-bottom: 24px;
+}
+
+.card-subtitle {
+    font-size: 14px;
+    color: #969696;
+    font-weight: 300;
+    margin-top: 8px;
+}
+
+
+/*------------ footer ----------*/
+
+
+  footer{
+      display: block;
+    padding: 32px 0;
+    width: 100%;
+    border-top: 1px #7dd2f0 solid;
+    color: #7dd2f0;
+    text-align: right;
+      margin: 120px 0;
+}
+
+footer > div.nav {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1024px;
+    height: 100%;
+}
+
+h4.contact{
+    font-size: 22px;
+    font-weight: 500;
+    margin: 60px 0 16px 0;
+}
+
+p.contact{
+    font-size: 15px;
+    margin-top: 6px;
+}
+
+p.contact > strong{
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 8px;
+    color: #7dd2f0;
+}
