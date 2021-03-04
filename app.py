@@ -25,7 +25,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # 이 문자열은 서버만 알고있기 때문에, 내 서버에서만 토큰을 인코딩(=만들기)/디코딩(=풀기) 할 수 있습니다.
 SECRET_KEY = 'SPARTA'
 
-client = MongoClient('mongodb://54.180.160.114', 27017, username="test", password="test")
+client = MongoClient('mongodb://test:test@localhost', 27017)
 db = client.usersdata
 
 
