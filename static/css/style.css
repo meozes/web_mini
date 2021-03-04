@@ -173,15 +173,16 @@ button.mood {
     text-align: left;
 }
 
-
+div.card{
+    width:220px;
+}
 div.card-body {
-    padding: 1.5rem 7rem 1.25rem 1.5rem;
+    display:block;
 }
 
 div.card-body > h5 {
     color: #666;
     font-size: 14px;
-
 }
 
 
@@ -258,13 +259,13 @@ strong.title {
 small.artist {
     font-size: 14px;
     color: #969696;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 p.nickname {
     font-size: 14px;
     color: #969696;
-    font-weight: 300;
+    font-weight: 400;
     text-align: right;
 }
 
@@ -293,10 +294,18 @@ body > article {
 .card-subtitle {
     font-size: 14px;
     color: #969696;
-    font-weight: 300;
+    font-weight: 400;
     margin-top: 8px;
+    margin-bottom: 0;
 }
 
+div.card > div.card-body{
+    padding:0.75rem 1.24rem 0.25rem 1.24rem;
+}
+
+div.card > div.card-body > h6{
+    color:#969696;
+}
 
 /*------------ footer ----------*/
 
